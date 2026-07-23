@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+# Project Gilbert memory files
+memory.json
+test_memory.json
