@@ -1,5 +1,14 @@
+from agents.gilbert import GilbertAgent
+
+
 def main():
-    print("Hello from project-gilbert!")
+    gilbert = GilbertAgent()
+
+    resposta = gilbert.execute(
+        "Explique como funciona o Project Gilbert"
+    )
+
+    print(resposta)
 
 
 if __name__ == "__main__":
