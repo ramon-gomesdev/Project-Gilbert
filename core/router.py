@@ -1,19 +1,39 @@
 class Router:
     """
-    Responsável por direcionar tarefas para os agentes corretos.
+    Responsável por identificar a melhor ação para uma tarefa.
     """
 
     def route(self, task: str):
         """
-        Analisa uma tarefa e retorna o agente responsável.
+        Analisa uma tarefa e retorna a intenção.
         """
 
         task = task.lower()
 
+        if "sistema" in task or "computador" in task:
+            return {
+                "type": "skill",
+                "name": "system"
+            }
+
+        if (
+            "pesquisa" in task
+            or "pesquise" in task
+            or "buscar" in task
+            or "procure" in task
+        ):
+            return {
+                "type": "skill",
+                "name": "research"
+            }
+
         if "código" in task or "programação" in task:
-            return "coding_agent"
+            return {
+                "type": "agent",
+                "name": "coding_agent"
+            }
 
-        if "pesquisa" in task or "buscar" in task:
-            return "research_agent"
-
-        return "gilbert_agent"
+        return {
+            "type": "agent",
+            "name": "gilbert"
+        }
