@@ -1,27 +1,21 @@
 import platform
 import sys
 
+from core.skill import Skill
 
-class SystemSkill:
+
+class SystemSkill(Skill):
     """
     Skill responsável por informações do sistema.
     """
 
+    name = "system"
+
     def execute(self):
-        info = self.get_system_info()
 
         return (
-            f"Sistema: {info['sistema']}\n"
-            f"Versão: {info['versao']}\n"
-            f"Arquitetura: {info['maquina']}\n"
-            f"Python: {info['python']}"
+            f"Sistema: {platform.system()}\n"
+            f"Versão: {platform.version()}\n"
+            f"Arquitetura: {platform.machine()}\n"
+            f"Python: {sys.version.split()[0]}"
         )
-
-    def get_system_info(self):
-
-        return {
-            "sistema": platform.system(),
-            "versao": platform.version(),
-            "maquina": platform.machine(),
-            "python": sys.version.split()[0]
-        }
