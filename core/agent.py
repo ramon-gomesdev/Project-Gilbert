@@ -3,13 +3,22 @@ class Agent:
     Classe base para todos os agentes do Project Gilbert.
     """
 
-    def __init__(self, name: str):
-        self.name = name
+    name = None
+
+    def __init__(self, skill_manager=None):
+
+        if self.name is None:
+            raise ValueError(
+                "Todo agente deve possuir um nome."
+            )
+
+        self.skill_manager = skill_manager
 
     def execute(self, task: str):
         """
-        Executa uma tarefa recebida pelo agente.
+        Método obrigatório para agentes.
         """
+
         raise NotImplementedError(
-            "Cada agente deve implementar seu próprio método execute()."
+            "Todo agente deve implementar execute()."
         )
