@@ -1,5 +1,5 @@
 from core.agent import Agent
-from skills.system import SystemSkill
+from core.skill_manager import SkillManager
 
 
 class GilbertAgent(Agent):
@@ -7,10 +7,10 @@ class GilbertAgent(Agent):
     Primeiro agente oficial do Project Gilbert.
     """
 
-    def __init__(self):
+    def __init__(self, skill_manager: SkillManager):
         super().__init__("Gilbert")
 
-        self.system_skill = SystemSkill()
+        self.skill_manager = skill_manager
 
     def execute(self, task: str):
         """
@@ -20,7 +20,10 @@ class GilbertAgent(Agent):
         task = task.lower()
 
         if "sistema" in task:
-            info = self.system_skill.get_system_info()
+
+            system_skill = self.skill_manager.get("system")
+
+            info = system_skill.get_system_info()
 
             return (
                 f"Sistema: {info['sistema']}\n"
