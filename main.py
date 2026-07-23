@@ -5,7 +5,7 @@ def main():
     gilbert = GilbertAgent()
 
     resposta = gilbert.execute(
-        "Explique como funciona o Project Gilbert"
+        "Mostre informações do sistema"
     )
 
     print(resposta)
