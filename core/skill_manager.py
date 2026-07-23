@@ -1,3 +1,6 @@
+from core.skill import Skill
+
+
 class SkillManager:
     """
     Gerenciador responsável por registrar e executar skills.
@@ -6,10 +9,15 @@ class SkillManager:
     def __init__(self):
         self.skills = {}
 
-    def register(self, name: str, skill):
+    def register(self, name: str, skill: Skill):
         """
         Registra uma nova skill.
         """
+
+        if not isinstance(skill, Skill):
+            raise TypeError(
+                "A skill deve herdar da classe Skill."
+            )
 
         self.skills[name] = skill
 

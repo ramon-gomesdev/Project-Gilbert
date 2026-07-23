@@ -1,20 +1,16 @@
 from core.skill_manager import SkillManager
-
-
-class TestSkill:
-    pass
+from skills.system import SystemSkill
 
 
 manager = SkillManager()
 
 manager.register(
-    "teste",
-    TestSkill()
+    "system",
+    SystemSkill()
 )
-
 
 print(manager.list_skills())
 
-skill = manager.get("teste")
+skill = manager.get("system")
 
-print(skill)
+print(skill.execute())
